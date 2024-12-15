@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行为视频展示</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-pair {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        .video-container {
+            flex: 1;
+        }
+        h3 {
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="videoContainer"></div>
+
+    <script>
+        const videoTitles = [
+            "走路+举手", "走路+挥手", "走路+伸手握", "走路+伸手摸",
+            "走路+面前顺时针转圈", "走路+面前逆时针转圈", "走路+招来", "走路+驱赶",
+            "走路+向左", "走路+向右", "走路+向上", "走路+向下",
+            "走路+鼓掌", "走路+搓手", "走路+点赞", "走路+点头",
+            "走路+反向点赞", "走路+摇头", "走路+转头看左边", "走路+转头看右边",
+            "走路+挠头", "走路+手摸下巴", "走路+双手交叉于胸前", "走路+双手叉腰",
+            "走路+伸懒腰", "走路+耸肩", "走路+喝水", "走路+打电话",
+            "走路+发短信"
+        ];
+
+        const container = document.getElementById('videoContainer');
+
+        videoTitles.forEach((title, index) => {
+            const videoPair = document.createElement('div');
+            videoPair.className = 'video-pair';
+            
+            const number = (index + 1).toString().padStart(2, '0');
+            videoPair.innerHTML = `
+                <div class="video-container">
+                    <h3>RGB - ${title}</h3>
+                    <img src="rgb-gif/${number}.gif" alt="RGB - ${title}" onError="this.onerror=null;this.src='rgb-gif/${number}.gif';">
+                </div>
+                <div class="video-container">
+                    <h3>点云 - ${title}</h3>
+                    <img src="pc-gif/${number}.gif" alt="点云 - ${title}" onError="this.onerror=null;this.src='pc-gif/${number}.gif';">
+                </div>
+            `;
+            
+            container.appendChild(videoPair);
+        });
+    </script>
+</body>
+</html>
