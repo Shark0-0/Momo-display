@@ -17,14 +17,19 @@
             gap: 20px;
             margin-bottom: 30px;
             width: 100%;
+            align-items: flex-start;
         }
         .video-container {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         h3 {
             text-align: center;
+            margin-bottom: 10px;
         }
-        video {
+        img {
             width: 100%;
             max-width: 500px;
         }
@@ -51,11 +56,11 @@
             const videoPair = document.createElement('div');
             videoPair.className = 'video-pair';
             
-            const number = (index + 1).toString().padStart(2, '0');
+            const number = (index + 1).toString();
             videoPair.innerHTML = `
                 <div class="video-container">
                     <h3>RGB - ${title}</h3>
-                    <img src="rgb-gif/${number}.gif" alt="RGB - ${title}" onError="this.onerror=null;this.src='rgb-gif/${number}.gif';">
+                    <img src="rgb-gif/${number}.gif" alt="RGB - ${title}" onError="this.onerror=null;this.src='images/placeholder.gif';">
                 </div>
                 <div class="video-container">
                     <h3>点云 - ${title}</h3>
